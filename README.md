@@ -14,4 +14,15 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# todoslist
+
+## GitHub Pages deployment notes
+
+This project currently builds the frontend into the `docs/` folder for GitHub Pages. The frontend is configured with `VITE_API_BASE`, so the app can connect to a public backend API.
+
+- For local development, copy from `.env.example` and set:
+  ```
+  VITE_API_BASE=http://localhost:8000
+  ```
+- For production on GitHub Pages, set a public backend base URL in `.env.production` before building.
+
+Important: GitHub Pages only serves the static frontend. To share todos between users, you must host the FastAPI backend on a publicly accessible server and update `VITE_API_BASE` to point to that backend.
